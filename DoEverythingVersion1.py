@@ -6,31 +6,6 @@ Created on Wed May 27 14:27:53 2020
 @author: mjgandhi
 """
 
-
-
-# Question 1-----------------------------------------------------------------
-# Which pieces of the pipeline do you want to implement?
-# Answers
-# Option 1 - Preprocessing - Yes or No
-# Option 2 - Smoothing - Yes or No
-# Option 3 - GLM - Yes or No
-# Option 4 - Analysis 1- ANOVA - yes or no
-# Option 5 - Analysis 2- ISC - yes or no
-# Option 6 - Analysis 3 - RSA - yes or no
-# Option 7 - Are you running your data through this pipeline the first time? - yes or no
-# Option 8 - If option 7 is yes - Display Note that Heudiconv is mandatory the first time - If no display user must make sure
-# data is input in correct format. 
-# Option 9 - Do you want to run MRIQC? - yes or no
-# Option 10 -  Do you want to run MRIQC on single subject or multiple subjects? - single /multiple
-# Option 11 - Do you want to run FMRIPREP? - yes or no
-# Option 12 - Do you want to run fMRIPREP on single subject or multiple subjects? - single/multiple
-# Option 13 - Do you want to run GLM ? - yes or no?
-# Option 14 - Do you want to run Analysis - ANOVA? yes or no?
-# Option 15 - Do you want to run Analysis - ISC? yes or no?
-# Option 16 - Do you want to run Analysis - RSA? yes or no?
-
-# Store into JSON Structure
-
 # Standard Section of the Pipeline-----------------------------------------------------------------
 # This section includes standard information that will always be used in the 
 # pipeline. For more advanced instructions there will be a separate section. 
@@ -110,9 +85,6 @@ Created on Wed May 27 14:27:53 2020
             #Option 16 no Subsection
 
 
-
-
-
 #!/usr/bin/env python
 # make sure anacondapy/5.3.1 is loaded before running (otherwise run will not be imported from subprocess)
 import logging
@@ -186,6 +158,53 @@ my_logger.debug("Starting the DoEverything Script")
 # JSON structure to export all the field values for debugging Single Subject 
 completeCommandList = {
     
+    
+# =============================================================================
+#     # Which pieces of the pipeline do you want to implement?
+#     # Answers
+#     # Option 1 - Preprocessing - Yes or No
+#     # Option 2 - Smoothing - Yes or No
+#     # Option 3 - GLM - Yes or No
+#     # Option 4 - Analysis 1- ANOVA - yes or no
+#     # Option 5 - Analysis 2- ISC - yes or no
+#     # Option 6 - Analysis 3 - RSA - yes or no
+#     # Option 7 - Are you running your data through this pipeline the first time? - yes or no
+#     # Option 8 - If option 7 is yes - Display Note that Heudiconv is mandatory the first time - If no display user must make sure
+#     # data is input in correct format. 
+#     # Option 9 - Do you want to run MRIQC? - yes or no
+#     # Option 10 -  Do you want to run MRIQC on single subject or multiple subjects? - single /multiple
+#     # Option 11 - Do you want to run FMRIPREP? - yes or no
+#     # Option 12 - Do you want to run fMRIPREP on single subject or multiple subjects? - single/multiple
+#     # Option 13 - Do you want to run GLM ? - yes or no?
+#     # Option 14 - Do you want to run Analysis - ANOVA? yes or no?
+#     # Option 15 - Do you want to run Analysis - ISC? yes or no?
+#     # Option 16 - Do you want to run Analysis - RSA? yes or no?
+# =============================================================================
+    
+    # Step0 - Choices
+    "choices" : {
+    
+        "step0_Option1" : "",
+        "step0_Option2" : "",
+        "step0_Option3" : "",
+        "step0_Option4" : "",
+        "step0_Option5" : "",
+        "step0_Option6" : "",
+        "step0_Option7" : "",
+        "step0_Option8" : "",
+        "step0_Option9" : "",
+        "step0_Option10" : "",
+        "step0_Option11" : "",
+        "step0_Option12" : "",
+        "step0_Option13" : "",
+        "step0_Option14" : "",
+        "step0_Option15" : "",
+        "step0_Option16" : "",
+        "step0_Option17" : "",
+        
+    },
+    
+    
     #Step1 - Single Subject
     "heudiconv": {
         "step1_ScannerDir" : "",
@@ -200,7 +219,7 @@ completeCommandList = {
     
    # -------------- BIDS Validator -----------------------------------------
    # -------------- Clarification ------------------------------------------ 
-   # -------------- No defacing will occur at this step --------------------
+   # -------------- Defacing? --------------------
     
     
 # =============================================================================
@@ -327,8 +346,105 @@ completeCommandList = {
 
 }
 
+############--------------CHOICES------------###############################
+
+# =============================================================================
+# # Option 1 - Preprocessing - Yes or No
+# =============================================================================
+
+step0_Option1 = "";
+
+# =============================================================================
+# # Option 2 - Smoothing - Yes or No
+# =============================================================================
+
+step0_Option2 = "";
+
+# =============================================================================
+# # Option 3 - GLM - Yes or No
+# =============================================================================
+
+step0_Option3 = "";
+
+# =============================================================================
+# # Option 4 - Analysis 1- ANOVA - yes or no
+# =============================================================================
+
+step0_Option4 = "";
+
+# =============================================================================
+# # Option 5 - Analysis 2- ISC - yes or no
+# =============================================================================
+
+step0_Option5 = "";
+
+# =============================================================================
+# # Option 6 - Analysis 3 - RSA - yes or no
+# =============================================================================
+
+step0_Option6 = "";
+
+# =============================================================================
+# # Option 7 - Are you running your data through this pipeline the first time? - yes or no
+# =============================================================================
+
+step0_Option7 = "";
+
+# =============================================================================
+# # Option 8 - If option 7 is yes - Display Note that Heudiconv is mandatory the first time - If no display user must make sure
+# # data is input in correct format. 
+# =============================================================================
+
+step0_Option8 = "";
+
+# =============================================================================
+# # Option 9 - Do you want to run MRIQC? - yes or no
+# =============================================================================
+
+step0_Option9 = "";
+
+# =============================================================================
+# # Option 10 -  Do you want to run MRIQC on single subject or multiple subjects? - single /multiple
+# =============================================================================
+
+step0_Option10 = "";
+
+# =============================================================================
+# # Option 11 - Do you want to run FMRIPREP? - yes or no
+# =============================================================================
+
+step0_Option11 = "";
+
+# =============================================================================
+# # Option 12 - Do you want to run fMRIPREP on single subject or multiple subjects? - single/multiple
+# =============================================================================
+
+step0_Option12 = "";
+
+# =============================================================================
+# # Option 13 - Do you want to run GLM ? - yes or no?
+# =============================================================================
+
+step0_Option13 = "";
+
+# =============================================================================
+# # Option 14 - Do you want to run Analysis - ANOVA? yes or no?
+# =============================================================================
+
+step0_Option14 = "";
+
+# =============================================================================
+# # Option 15 - Do you want to run Analysis - ISC? yes or no?
+# =============================================================================
+
+step0_Option15 = "";
 
 
+# =============================================================================
+# # Option 16 - Do you want to run Analysis - RSA? yes or no?
+# =============================================================================
+
+step0_Option16 = "";
 
 ############--------------HEUDICONV------------###############################
 
@@ -520,7 +636,6 @@ step3_Email = "";
 # =============================================================================
 step3_logFileOutput = "";
         
-
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # Append Everything to the JSON Object  Will be added once the data 
