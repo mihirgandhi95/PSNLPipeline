@@ -181,30 +181,144 @@ my_logger.debug("Starting the DoEverything Script")
 # =============================================================================
 
 
-# JSON structure to export all the field values for debugging 
+# JSON structure to export all the field values for debugging Single Subject 
 completeCommandList = {
     
-    "heudiconv":{
-            
+    #Step1 - Single Subject
+    "heudiconv": {
+        "step1_ScannerDir" : "",
+        "step1_ProjectDir" : "",
+        "step1_SubId" : 0,
+        "step1_SessionID" : 1,
+        "step1_RawDir" : "",
+        "step1_FieldMaps" : "",
+        "step1_IFFBeginning" : [],
+        "step1_IFFInsert" : []
     },
+    
+   # -------------- BIDS Validator -----------------------------------------
+   # -------------- Clarification ------------------------------------------ 
+   # -------------- No defacing will occur at this step --------------------
+    
+    
+# =============================================================================
+#     usage: mriqc [-h] [--version]
+#              [--participant_label [PARTICIPANT_LABEL [PARTICIPANT_LABEL ...]]]
+#              [--session-id [SESSION_ID [SESSION_ID ...]]]
+#              [--run-id [RUN_ID [RUN_ID ...]]]
+#              [--task-id [TASK_ID [TASK_ID ...]]]
+#              [-m [{T1w,bold,T2w} [{T1w,bold,T2w} ...]]] [--dsname DSNAME]
+#              [-w WORK_DIR] [--verbose-reports] [--write-graph] [--dry-run]
+#              [--profile] [--use-plugin USE_PLUGIN] [--no-sub] [--email EMAIL]
+#              [-v] [--webapi-url WEBAPI_URL] [--webapi-port WEBAPI_PORT]
+#              [--upload-strict] [--n_procs N_PROCS] [--mem_gb MEM_GB]
+#              [--testing] [-f] [--ica] [--hmc-afni] [--hmc-fsl]
+#              [--fft-spikes-detector] [--fd_thres FD_THRES]
+#              [--ants-nthreads ANTS_NTHREADS] [--ants-float]
+#              [--ants-settings ANTS_SETTINGS] [--deoblique] [--despike]
+#              [--start-idx START_IDX] [--stop-idx STOP_IDX]
+#              [--correct-slice-timing]
+#              bids_dir output_dir {participant,group} [{participant,group} ...]
+# =============================================================================
+    
+    
+    #Step2 - Single Subject
+    # Advanced Options will only be available towards the end of the script 
+    # at a later stage of development 
+    # parameters that cannot be changed
+    # 1) correct slice timing
+    # 2) --no-sub
     "mriqc":{
         
-    },
-    "fmriprep":{
+        "step2_BidsDir" : "",
+        "step2_WorkDir" : "",
+        "step2_OutoutDir" : "",
+        "step2_nprocs" : "",
+        "step2_jobName": "",
+        "step2_subjectNum": "",
+        "step2_time": 180,
+        "step2_CPUParam": 8,
+        "step2_MemoryParam" : 10000,
+        "step2_Email" : "", 
+        "step2_LogfileOutput": ""
         
     },
+    
+# =============================================================================
+#     usage: fmriprep [-h] [--version] [--skip_bids_validation]
+#                 [--participant-label PARTICIPANT_LABEL [PARTICIPANT_LABEL ...]]
+#                 [-t TASK_ID] [--echo-idx ECHO_IDX] [--bids-filter-file PATH]
+#                 [--anat-derivatives PATH] [--nprocs NPROCS]
+#                 [--omp-nthreads OMP_NTHREADS] [--mem MEMORY_GB] [--low-mem]
+#                 [--use-plugin USE_PLUGIN] [--anat-only] [--boilerplate_only]
+#                 [--md-only-boilerplate] [--error-on-aroma-warnings] [-v]
+#                 [--ignore {fieldmaps,slicetiming,sbref} [{fieldmaps,slicetiming,sbref} ...]]
+#                 [--longitudinal]
+#                 [--output-spaces [OUTPUT_SPACES [OUTPUT_SPACES ...]]]
+#                 [--bold2t1w-init {register,header}] [--bold2t1w-dof {6,9,12}]
+#                 [--force-bbr] [--force-no-bbr] [--medial-surface-nan]
+#                 [--dummy-scans DUMMY_SCANS] [--random-seed RANDOM_SEED]
+#                 [--use-aroma]
+#                 [--aroma-melodic-dimensionality AROMA_MELODIC_DIM]
+#                 [--return-all-components]
+#                 [--fd-spike-threshold REGRESSORS_FD_TH]
+#                 [--dvars-spike-threshold REGRESSORS_DVARS_TH]
+#                 [--skull-strip-template SKULL_STRIP_TEMPLATE]
+#                 [--skull-strip-fixed-seed]
+#                 [--skull-strip-t1w {auto,skip,force}] [--fmap-bspline]
+#                 [--fmap-no-demean] [--use-syn-sdc] [--force-syn]
+#                 [--fs-license-file PATH] [--fs-subjects-dir PATH]
+#                 [--no-submm-recon] [--cifti-output [{91k,170k}] |
+#                 --fs-no-reconall] [-w WORK_DIR] [--clean-workdir]
+#                 [--resource-monitor] [--reports-only] [--run-uuid RUN_UUID]
+#                 [--write-graph] [--stop-on-first-crash] [--notrack] [--sloppy]
+#                 bids_dir output_dir {participant}
+# =============================================================================
+    
+    
+    #Step3 - Single Subject
+    # Advanced Options will only be available towards the end of the script 
+    # at a later stage of development
+    # parameters that cannot be changed
+    # 1) --skip_bids_validation 
+    # 2) --bold2t1w-dof
+    # 3) --medial-surface-nan
+    # 4) --output-spaces
+    # 5) --notrack
+    "fmriprep":{
+        
+        "step3_BidsDir" : "",
+        "step3_WorkDir" : "",
+        "step3_OutoutDir" : "",
+        "step3_licenseFile" : "",
+        "step3_ompNthreads" : 8,
+        "step3_nthreads" : 8,
+        "step3_jobName": "",
+        "step3_subjectNum": "",
+        "step3_time": 180,
+        "step3_CPUParam": 8,
+        "step3_MemoryParam" : 10000,
+        "step3_Email" : "",
+        "Step3_logFileOutput": ""
+        
+    },
+    #Step4 - Single Subject
     "smoothing":{
         
     },
+    #Step5 - Single Subject
     "GLM":{
         
     },
+    #Step6 - Single Subject
     "Analysis_ANOVA":{
         
     },
+    #Step7 - Single Subject
     "Analysis_ISC":{
         
     },
+    #Step8 - Single Subject
     "Analysis_RSA":{
         
     }
@@ -346,5 +460,10 @@ slurmFmriprepEmailID = ""
 print(slurmFmriprepEmailID);
 
 
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# Append Everything to the JSON Object  Will be added once the data 
+# structure is finalized
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 
