@@ -10,7 +10,24 @@ Created on Wed May 27 14:27:53 2020
 # This section includes standard information that will always be used in the 
 # pipeline. For more advanced instructions there will be a separate section. 
 
-#PARSE JSON OBJECT TO CREATE CONTROL FLOWGRAPH AND ACCESS SPECIFIC SECTION ON CODE REQUIRED. 
+
+##@@@@@@@@@@@@@@---------OVERALL JSON STRUCTURE ---------------@@@@@@@@@@@@@@@##
+
+# =============================================================================
+# completeCommandList = {
+#     "choices" : { },
+#     "heudiconv": {},
+#     "mriqc":{},
+#     "fmriprep":{},
+#     "smoothing":{},
+#     "GLM":{},
+#     "Analysis_ANOVA":{},
+#     "Analysis_ISC":{},
+#     "Analysis_RSA":{}
+# }  
+# =============================================================================
+
+# PARSE JSON OBJECT TO CREATE CONTROL FLOWGRAPH AND ACCESS SPECIFIC SECTION ON CODE REQUIRED. 
 
 # ADDITONAL STANDARD INPUT SECTION CONTROL FLOW GRAPH
 
