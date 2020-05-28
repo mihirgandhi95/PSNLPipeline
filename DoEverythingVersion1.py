@@ -6,6 +6,8 @@ Created on Wed May 27 14:27:53 2020
 @author: mjgandhi
 """
 
+
+
 # Question 1-----------------------------------------------------------------
 # Which pieces of the pipeline do you want to implement?
 # Answers
@@ -325,145 +327,59 @@ completeCommandList = {
 
 }
 
-####################################---1---####################################
-# 1)  globals_Scanner_Directory = ""
-# Globals.sh variables required 
-# scanner_directory - Directory where the files on the scanner are stored. 
-# project directory - Directory where your project is 
-globals_Scanner_Directory = ""
-print(globals_Scanner_Directory);
-
-
-# 2) globals_Project_Directory = "" 
-globals_ProjectDirectory = ""
-print(globals_ProjectDirectory);
-
-
-####################################---2---####################################
-# run_heudiconv.py variables required 
-# heudiconv_version - version of heudiconv you want to use 
-
-heudiconv_version = ""
-print(heudiconv_version);
-
-
-
-####################################---3---####################################
-# step1_preproc.sh variables required 
-# List of subjects you want to run heudiconv on - [01,02,03,...] 
-# SessionID - default will be 01 for all subjects unless you want to include 
-# multiple day studies
-# List of directory names for the folders that contain the raw data for the subjects
-# Make sure the data directories are properly arranged in the list according to the subject numbers
-
-heudiconv_Subject_List = [];
-print(heudiconv_Subject_List);
-
-sessionId = ""
-print(sessionId);
-
-heudiconv_directory_names = []
-print(heudiconv_directory_names);
-
-
-
-####################################---4---####################################
-# step2_preproc variables required 
-# Are you using fieldmaps? Yes or no
-# default is one session only and no multiple day experiments
-# If you want to use fieldmaps for susceptibility distortion correction, 
-# enter the IntendedFor field
-# e.g.
-#
-# SESSION 1: list all run filenames
-# =============================================================================
-# beginning='"IntendedFor": ['
-# run1="\""ses-01/func/sub-${subj}_ses-01_task-Black_run-01_bold.nii.gz"\","
-# run2="\""ses-01/func/sub-${subj}_ses-01_task-Conv_run-01_bold.nii.gz"\","
-# run3="\""ses-01/func/sub-${subj}_ses-01_task-Conv_run-02_bold.nii.gz"\","
-# run4="\""ses-01/func/sub-${subj}_ses-01_task-Conv_run-03_bold.nii.gz"\","
-# run5="\""ses-01/func/sub-${subj}_ses-01_task-Conv_run-04_bold.nii.gz"\","
-# run6="\""ses-01/func/sub-${subj}_ses-01_task-Conv_run-05_bold.nii.gz"\""
-# end="],"
-# 
-# insert="${beginning}${run1} ${run2} ${run3} ${run4} ${run5} ${run6}${end}"
-# 
-# # insert IntendedFor field after line 35 (i.e., it becomes the new line 36)
-# sed -i "35 a \ \ ${insert}" $bids_dir/sub-$subj/ses-01/fmap/sub-${subj}_ses-01_dir-AP_epi.json
-# sed -i "35 a \ \ ${insert}" $bids_dir/sub-$subj/ses-01/fmap/sub-${subj}_ses-01_dir-PA_epi.json
-# =============================================================================
- 
-fieldmaps_used ="";
-print(fieldmaps_used);
-
-intendedForFieldBeginning = []
-print(intendedForFieldBeginning);
-
-intendedForFieldInsert = []
-print(intendedForFieldInsert);
 
 
 
 
-####################################---5---####################################
-# Current default single subject for MRIQC 
-# run_mriqc.sh variables required Default mriqc version will be used 
-# bids_dir = Directory where the bids folder is located 
-# e.g. bids_dir=/jukebox/tamir/mjgandhi/heudiconv/HEUDICONV/MRIQC_checker/mriqc_3/data/bids
 
-runMriqcBidsDir = ""
-print(runMriqcBidsDir);
+############--------------HEUDICONV------------###############################
 
 
-####################################---6---####################################
-# Current default single subject subject for MRIQC 
-# slurm_mriqc.sh variables required
-# subjectIdNumber = subject number to run
-# Email for slurm messages - Enter email for the messages when the task begins, ends and if it fails
-
-slurmMriqcSubjectID = "";
-print(slurmMriqcSubjectID);
-
-slurmMriqcEmailID = ""
-print(slurmMriqcEmailID);
+step1_ScannerDir = "";
+step1_ProjectDir = "";
+step1_SubId = 0;
+step1_SessionID = 1;
+step1_RawDir = "";
+step1_FieldMap= "";
+step1_IFFBeginning = [];
+step1_IFFInsert = [];
 
 
-####################################---7---####################################
-# Current default single subject for FMRIPREP
-# run_fmriprep.sh variables required Default fmriprep version will be used 
-# fieldmaps_considered: If fieldmaps are to be considered leave as empty 
-# if you don't want to use fieldmaps - enter '--ignore fieldmaps' in this field
-# longitudinal - if you want to use 2 T1W images or more set this field to 'longitudinal'
-# else leave this field empty
-
-runFmriprepFieldmaps = ""
-print(runFmriprepFieldmaps);
-
-runFmriprepLongitudinal = "";
-print(runFmriprepLongitudinal);
+############--------------MRIQC----------------###############################
 
 
+step2_BidsDir = "";
+step2_WorkDir = "";
+step2_OutoutDir = "";
+step2_nprocs = "";
+step2_jobName = "";
+step2_subjectNum = "";
+step2_time = 180;
+step2_CPUParam = 8;
+step2_MemoryParam = 10000;
+step2_Email = "";
+step2_LogfileOutput = "";
 
-####################################---8---####################################
-# Current default single subject subject for FMRIPREP 
-# slurm_fmriprep.sh variables required
-# subjectIdNumber = subject number to run
-# Email for slurm messages - Enter email for the messages when the task begins, ends and if it fails
-# cpus-per-task will be set to default- 12
-# --mem-per-cpu will be set to default - 24000
-#  time per job will be set to 34 hours
 
-slurmFmriprepSubjectIdNumber = ""
-print(slurmFmriprepSubjectIdNumber);
+############--------------FMRIPREP------------###############################
 
-slurmFmriprepEmailID = ""
-print(slurmFmriprepEmailID);
-
+step3_BidsDir = "";
+step3_WorkDir = "";
+step3_OutoutDir = "";
+step3_licenseFile = "";
+step3_ompNthreads = 8;
+step3_nthreads = 8;
+step3_jobName = "";
+step3_subjectNum = "";
+step3_time = 180;
+step3_CPUParam = 8;
+step3_MemoryParam = 10000;
+step3_Email = "";
+Step3_logFileOutput = "";
+        
 
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # Append Everything to the JSON Object  Will be added once the data 
 # structure is finalized
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
-
