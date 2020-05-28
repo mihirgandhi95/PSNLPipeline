@@ -301,7 +301,7 @@ completeCommandList = {
         "step3_CPUParam": 8,
         "step3_MemoryParam" : 10000,
         "step3_Email" : "",
-        "Step3_logFileOutput": ""
+        "step3_logFileOutput": ""
         
     },
     #Step4 - Single Subject
@@ -330,52 +330,195 @@ completeCommandList = {
 
 
 
-
-
 ############--------------HEUDICONV------------###############################
 
-
+# =============================================================================
+# scanner_directory - Directory where the files on the scanner are stored. 
+# =============================================================================
 step1_ScannerDir = "";
+
+# =============================================================================
+# project directory - Directory where your project is 
+# =============================================================================
 step1_ProjectDir = "";
+
+# =============================================================================
+# Enter the subjectID fr the subject you want to run heudiconv on 
+# =============================================================================
 step1_SubId = 0;
+
+# =============================================================================
+# SessionID - default will be 01 for all subjects unless you want to include 
+# =============================================================================
 step1_SessionID = 1;
+
+# =============================================================================
+# List of directory names for the folders that contain the raw data for the subjects
+# =============================================================================
 step1_RawDir = "";
+
+# =============================================================================
+# # default is one session only and no multiple day experiments
+# # If you want to use fieldmaps for susceptibility distortion correction, 
+# # enter the IntendedFor field
+# =============================================================================
 step1_FieldMap= "";
+
+# =============================================================================
+# # SESSION 1: list all run filenames
+# # =============================================================================
+# # beginning='"IntendedFor": ['
+# # run1="\""ses-01/func/sub-${subj}_ses-01_task-Black_run-01_bold.nii.gz"\","
+# # run2="\""ses-01/func/sub-${subj}_ses-01_task-Conv_run-01_bold.nii.gz"\","
+# # run3="\""ses-01/func/sub-${subj}_ses-01_task-Conv_run-02_bold.nii.gz"\","
+# # run4="\""ses-01/func/sub-${subj}_ses-01_task-Conv_run-03_bold.nii.gz"\","
+# # run5="\""ses-01/func/sub-${subj}_ses-01_task-Conv_run-04_bold.nii.gz"\","
+# # run6="\""ses-01/func/sub-${subj}_ses-01_task-Conv_run-05_bold.nii.gz"\""
+# # end="],"
+# =============================================================================
 step1_IFFBeginning = [];
+
+# =============================================================================
+# 
+# # insert="${beginning}${run1} ${run2} ${run3} ${run4} ${run5} ${run6}${end}"
+# # 
+# # # insert IntendedFor field after line 35 (i.e., it becomes the new line 36)
+# # sed -i "35 a \ \ ${insert}" $bids_dir/sub-$subj/ses-01/fmap/sub-${subj}_ses-01_dir-AP_epi.json
+# # sed -i "35 a \ \ ${insert}" $bids_dir/sub-$subj/ses-01/fmap/sub-${subj}_ses-01_dir-PA_epi.json
+# # =============================================================================
+# =============================================================================
 step1_IFFInsert = [];
 
 
 ############--------------MRIQC----------------###############################
 
-
+# =============================================================================
+# bids_dir	The directory with the input dataset formatted according to the BIDS standard.
+# =============================================================================
 step2_BidsDir = "";
+
+# =============================================================================
+# -w, --work-dir	change the folder to store intermediate results
+# =============================================================================
 step2_WorkDir = "";
+
+# =============================================================================
+# output_dir	The directory where the output files should be stored. If you are running group level analysis this folder should be prepopulated with the results of theparticipant level analysis.
+# =============================================================================
 step2_OutoutDir = "";
+
+
+# =============================================================================
+# --n_procs, --nprocs, --n_cpus, --nprocs
+#  	number of threads
+# =============================================================================
 step2_nprocs = "";
+
+# =============================================================================
+# Enter the name that you want to give this job
+# =============================================================================
 step2_jobName = "";
+
+# =============================================================================
+# Enter the subject number for whom you want to run MRIQC
+# =============================================================================
 step2_subjectNum = "";
+
+# =============================================================================
+# Enter the time you think MRIQC will take to complete in minutes
+# =============================================================================
 step2_time = 180;
+
+# =============================================================================
+# Enter the CPUs per task you need 
+# =============================================================================
 step2_CPUParam = 8;
+
+# =============================================================================
+# Enter the Memory per CPU you want to request
+# =============================================================================
 step2_MemoryParam = 10000;
+
+# =============================================================================
+# Enter the email address where you want to be notified of jobs
+# =============================================================================
 step2_Email = "";
+
+# =============================================================================
+# Enter the location where you want the log files from MRIQC to be written
+# =============================================================================
 step2_LogfileOutput = "";
 
 
 ############--------------FMRIPREP------------###############################
 
+# =============================================================================
+# bids_dir	The directory with the input dataset formatted according to the BIDS standard.
+# =============================================================================
 step3_BidsDir = "";
+
+# =============================================================================
+# -w, --work-dir	change the folder to store intermediate results
+# =============================================================================
 step3_WorkDir = "";
+
+# =============================================================================
+# output_dir	The directory where the output files should be stored. If you are running group level analysis this folder should be prepopulated with the results of theparticipant level analysis.
+# =============================================================================
 step3_OutoutDir = "";
+
+# =============================================================================
+# --fs-license-file
+# Path to FreeSurfer license key file. Get it (for free) by registering at https://surfer.nmr.mgh.harvard.edu/registration.html
+# =============================================================================
 step3_licenseFile = "";
+
+# =============================================================================
+# --omp-nthreads
+# maximum number of threads per-process
+# =============================================================================
 step3_ompNthreads = 8;
+
+# =============================================================================
+# --nprocs, --nthreads, --n_cpus, --n-cpus
+# maximum number of threads across all processes
+# =============================================================================
 step3_nthreads = 8;
+
+# =============================================================================
+# Enter the name that you want to give this job
+# =============================================================================
 step3_jobName = "";
+
+# =============================================================================
+# Enter the subject number for whom you want to run MRIQC
+# =============================================================================
 step3_subjectNum = "";
+
+# =============================================================================
+# Enter the time you think MRIQC will take to complete in minutes
+# =============================================================================
 step3_time = 180;
+
+# =============================================================================
+# Enter the CPUs per task you need 
+# =============================================================================
 step3_CPUParam = 8;
+
+# =============================================================================
+# Enter the Memory per CPU you want to request
+# =============================================================================
 step3_MemoryParam = 10000;
+
+# =============================================================================
+# Enter the email address where you want to be notified of jobs
+# =============================================================================
 step3_Email = "";
-Step3_logFileOutput = "";
+
+# =============================================================================
+# Enter the location where you want the log files from MRIQC to be written
+# =============================================================================
+step3_logFileOutput = "";
         
 
 
